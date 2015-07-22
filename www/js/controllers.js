@@ -12,20 +12,64 @@ angular.module('starter.controllers', [])
     
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $cordovaBarcodeScanner) {
+.controller('ChatsCtrl', function($scope, Chats, $cordovaBarcodeScanner,$http) {
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   }
+  $scope.barcode="";
+  
+
+  
+    angular.element(document).ready(function () {
+         //alert("load");
+         document.getElementById("requestPayBtn1").disabled = true;
+         $scope.amountDivShow = false;
+         $scope.seInfoShow = false;
+         $scope.requestPayEabled = false;
+         $scope.transIdShow = false;
+         //document.getElementById("amountDiv").display = none;
+         //document.getElementById("seInfo").disabled = true;
+         
+         
+ 		 $scope.requestPayDisabled = true;
+    });
+
+
+  
   $scope.scanBarcode = function() {
         $cordovaBarcodeScanner.scan().then(function(imageData) {
-            alert(imageData.text);
+            //alert(imageData.text);
+            $scope.barcode=imageData.text;
+            document.getElementById("requestPayBtn1").disabled = false;
+         	$scope.amountDivShow = true;
+            $scope.seInfoShow = true;
+            $scope.requestPayEabled = true;
+           
+            
             console.log("Barcode Format -> " + imageData.format);
             console.log("Cancelled -> " + imageData.cancelled);
         }, function(error) {
             console.log("An error happened -> " + error);
         });
     };
+    
+     $scope.paySMSAction = function() {
+      //document.getElementById("requestPayBtn1").disabled = true;
+  	  //$scope.requestPayDisabled = true;
+  
+      $http.get("http://bulksms.sms2india.info/sendsms.php?user=leoshubham89%40gmail.com&password=Amex123&sender=0008&countrycode=91&PhoneNumber=8197721837&text=This+is+API+Testing+Message&gateway=ZJWWTYRQ" ).success(function(data) {
+            //alert(data);
+            $scope.transIdShow = true;
+             $scope.requestPayEabled = false;
+                     })
+       .error(function(data) {
+ 		alert("ERROR");
+		});
+     };
+     
+     
+    
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
@@ -223,7 +267,7 @@ console.log('BackgroundFetch End');
     enable: false
   };
   
-  $scope.pwpChange = function() {
+ $scope.pwpChange = function() {
     	function successCallback(){
             alert("Pay With Print registration Success");
         }
@@ -259,7 +303,6 @@ console.log('BackgroundFetch End');
 	
 	window.scrollTo(0, window.document.height);
 };
-
 
        
        
