@@ -9,14 +9,7 @@ angular.module('starter.controllers', [])
     Chats.remove(chat);
   }
   
-    $scope.homearray = [
-    { title: 'Sibish', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+    
 })
 
 .controller('ChatsCtrl', function($scope, Chats, $cordovaBarcodeScanner) {
@@ -40,6 +33,15 @@ angular.module('starter.controllers', [])
 })
 
 .controller('FriendsCtrl', function($scope, Friends) {
+
+$scope.homearray = [
+    { title: 'KFC', id: 1 },
+    { title: 'Chroma', id: 2 },
+    { title: 'Dubstep', id: 3 },
+    { title: 'Indie', id: 4 },
+    { title: 'Rap', id: 5 },
+    { title: 'Cowbell', id: 6 }
+  ];
   $scope.friends = Friends.all();
   //$scope.beaconAccuracy=0;
   //alert("Inside FriendsCtrl");
