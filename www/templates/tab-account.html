@@ -1,0 +1,46 @@
+<ion-view view-title="Amex Passport">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-toggle">
+        Pay With Print
+        <label class="toggle">
+          <input type="checkbox" ng-model="pwp.enable" ng-change="pwpChange()">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </ion-item>
+      <ion-item class="item-toggle">
+        Proximity Payment 
+        <label class="toggle">
+          <input type="checkbox" ng-model="settings.enableFriends" ng-change="ppChange()">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </ion-item>
+    </ion-list>
+    <div class="list card">
+
+ 	 <div class="item item-thumbnail-left">
+    	<img src="img/gold.png">
+    	<h2>Charles Frank</h2>
+    	<p>Gold Card Ending In -1003</p>
+  	</div>
+
+    <div class="card">
+ 		 <div class="item item-divider">
+    		Address
+  		</div>
+  		<div class="item item-text-wrap">
+    		18416 N Cave Creek Rd APT 1006
+  		</div>
+  		<div class="item item-text-wrap">
+    		Phoenix AZ 85032
+  		</div>
+  		
+	 </div>
+
+	</div>
+  </ion-content>
+</ion-view>
