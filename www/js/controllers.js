@@ -19,6 +19,15 @@ angular.module('starter.controllers', [])
   }
   $scope.barcode="";
   
+ 
+
+  function onError(err) {
+    alert(JSON.stringify(err));
+}
+function onSuccess(response) {
+    alert(response);
+}
+
 
   
     angular.element(document).ready(function () {
@@ -33,6 +42,8 @@ angular.module('starter.controllers', [])
          
          
  		 $scope.requestPayDisabled = true;
+ 		  
+ 		 
     });
 
 
@@ -54,9 +65,29 @@ angular.module('starter.controllers', [])
         });
     };
     
+     $scope.payApplePayAction = function() {
+     	ApplePay.setMerchantId("merchant.com.sibish.posify");
+ 		 ApplePay.makePaymentRequest(onSuccess, onError, {
+    items: [
+        { label: "item 1", amount: 0.01 },
+        { label: "item 2", amount: 0.01 }
+    ],
+    shippingMethods: [
+        { identifier: "By Sea", detail: "Shipmates on a ship.", amount: 0.01 },
+        { identifier: "Airmail", detail: "Ship it by airplane.", amount: 0.01 }
+    ]
+});
+     
+      };
+    
      $scope.paySMSAction = function() {
       //document.getElementById("requestPayBtn1").disabled = true;
   	  //$scope.requestPayDisabled = true;
+  
+        
+
+
+  
   
       $http.get("http://bulksms.sms2india.info/sendsms.php?user=leoshubham89%40gmail.com&password=Amex123&sender=0008&countrycode=91&PhoneNumber=8197721837&text=This+is+API+Testing+Message&gateway=ZJWWTYRQ" ).success(function(data) {
             //alert(data);

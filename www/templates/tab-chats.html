@@ -36,7 +36,15 @@
 	<form ng-submit="paySMSAction()">
       <div class="list" ng-show="requestPayEabled" >
         <label class="item">
-          <button  id="requestPayBtn1" class="button button-block button-positive"  type="submit">Pay</button>
+          <button  id="requestPayBtn1" class="button button-block button-positive"  type="submit">Pay with AmexCheckout</button>
+        </label>
+      </div>
+    </form>
+    
+    <form ng-submit="payApplePayAction()">
+      <div class="list" ng-show="requestPayEabled" >
+        <label class="item">
+          <button  id="requestPayBtn2" class="button button-block button-positive"  type="submit">Pay with Apple Pay</button>
         </label>
       </div>
     </form>
