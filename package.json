@@ -17,6 +17,7 @@
   "cordovaPlugins": [
     "uk.co.ilee.touchid",
     "https://github.com/petermetz/cordova-plugin-ibeacon.git",
-    "https://github.com/christocracy/cordova-plugin-background-fetch.git"
+    "https://github.com/christocracy/cordova-plugin-background-fetch.git",
+    "https://github.com/wildabeast/BarcodeScanner.git"
   ]
 }

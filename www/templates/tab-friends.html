@@ -1,70 +1,17 @@
-<ion-view view-title="Amex Passport">
+<ion-view view-title="AmexPOSify">
   <ion-content>
-    
-    
-	
-    <div class="list card">
-
-     <a class="item item-thumbnail-left" href="#">
-      <img src="img/gold.png">
-      <h2>Charles Frank</h2>
-      <p>Gold Card Ending In -1003</p>
-      <p>Spending Capability - $5000.00</p>
-     </a>
-
-
-  	<div class="card">
- 		 <div class="item item-divider">
-    		Card Benefits
-  		</div>
-  		<div class="item item-text-wrap">
-    		MR Points - 2%
-  		</div>
-  		<div class="item item-divider">
-   		 $10 off $25 or more
-  		</div>
-	 </div>
-
-    <div class="card">
-  		 <div class="item item-thumbnail-left">
-  		 
-    	 		<img id="beaconImage" src="img/red.png">
-    	 
-    	 	<div class="row">
-  				<div class="col col-50"></div>
-			</div
-			<div class="row">
-  				<div class="col">
-  				<h2 id="beaconText">Move closer to Pay</h2>
-  				<p id="beaconText2"></p>
-  				</div>
-			</div
-    	 	
-  		 </div>
-  		<div class="item item-divider">
-  		    <div class="row">
-  		      
-  		        <div class="col">
-    				<div id="accuracydiv">
-					</div>
-				</div>
-				
-			</div
-  		</div>
+   <div class="bar bar-header bar-positive">
+  		<h1  class="title">$300.00 Balance</h1>
 	</div>
-	
-
-
+	<div class="bar bar-subheader  bar-stable">
+  	<h4 class="title">COMPLETED TRANSACTIONS</h4>
 	</div>
-	
-	<div class="row">
-   	 <div class="col"></div>
-  		<div class="col col-50">
-  			<button id="requestPayBtn" disabled="true" class="button button-large button-positive" ng-disabled="requestPayDisabled" ng-click="requestPayClick()">
-  			Request Pay	
-		</button>
-  		</div>
-  	 <div class="col"></div>
-	</div>
+   <ion-list>
+      <ion-item  class="has-header has-subheader" ng-repeat="home in homearray" href="#/dash/{{home.id}}">
+        <p>March 20 2015</p>
+        <h2> {{home.title}}  $10.00</h2>
+        <p>Transaction ID : 12348120AS</p>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
