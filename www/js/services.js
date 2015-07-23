@@ -76,47 +76,61 @@ return {
 // Might use a resource here that returns a JSON array
 
 // Some fake testing data
-var friends = [{
-  id: 0,
-  name: 'Macys',
-  notes: 'Paradise Valley Mall, Phoenix',
-  amount: '103.89',
-  tdate: 'March 20 2015',
-  tid: 'xyz',
-  face: 'http://static.squarespace.com/static/50ebe3b6e4b0a5b2685e26ac/t/52ced2c2e4b0b2d0085a61af/1389286083164/macys-logo.png'
-}, {
-  id: 1,
-  name: 'Sears',
-  amount: '1023.89',
-  tdate: 'March 22 2015',
-  tid: 'xysdz',
-  notes: 'Paradise Valley Mall, Phoenix',
-  face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-}, {
-  id: 2,
-  name: 'Andrew Jostlen',
-  amount: '1023.89',
-  tdate: 'March 20 2015',
-  tid: 'xyz',
-  notes: 'Wears a sweet leather Jacket. I\'m a bit jealous',
-  face: 'https://pbs.twimg.com/profile_images/491274378181488640/Tti0fFVJ.jpeg'
-}, {
-  id: 3,
-  name: 'Adam Bradleyson',
-  amount: '1023.89',
-  tdate: 'March 20 2015',
-  tid: 'xyz',
-  notes: 'I think he needs to buy a boat',
-  face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-}, {
-  id: 4,
-  name: 'Perry Governor',
-  amount: '1023.89',
-  tdate: 'March 20 2015',
-  tid: 'xyz',
-  notes: 'Just the nicest guy',
-  face: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg'
-}];
+
+var friends = [
+{
+ id : 1,
+ name : 'Bak Bak Bar',
+ notes : 'Koramangala, Bangalore',
+ amount: '1890.00',
+ tdate: '22-Jul-2015',
+ tid: '01816563',
+ face: 'http://www.bakasur.com/images/bakasur-logo.png',
+ batch_num: '000632',
+ roc_num: '009283',
+ se10: '9827016676',
+ appr_code: '68'
+},
+{
+ id : 2,
+ name : 'SPAR Hyper Market',
+ notes : 'Koramangala, Bangalore',
+ amount: '3110.87',
+ tdate: '21-Jul-2015',
+ tid: '01716463',
+ face: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Spar-logo.svg/640px-Spar-logo.svg.png',
+ batch_num: '001632',
+ roc_num: '001233',
+ se10: '1827006676',
+ appr_code: '68'
+},
+{
+ id : 3,
+ name : 'Lifestyle',
+ notes : 'Koramangala, Bangalore',
+ amount: '670.71',
+ tdate: '20-Jul-2015',
+ tid: '06816563',
+ face: 'https://upload.wikimedia.org/wikipedia/en/1/1c/This_is_the_logo_of_the_Lifestyle_Stores.jpg',
+ batch_num: '000132',
+ roc_num: '000983',
+ se10: '9817016476',
+ appr_code: '68'
+},
+{
+ id : 4,
+ name : 'Costa Coffee',
+ notes : 'Koramangala, Bangalore',
+ amount: '123.00',
+ tdate: '20-Jul-2015',
+ tid: '01816563',
+ face: '',
+ batch_num: '000532',
+ roc_num: '010283',
+ se10: '6827016676',
+ appr_code: '68'
+}
+];
 
 
 return {
@@ -140,20 +154,77 @@ return {
          
          // Some fake testing data
          var merchants = [
-         {
-          id: 1,
-          name: 'Punjab Grill',
-          address: '1 SJR Primus  Ground Floor Opposite Forum Mall  7th Block Koramangala Bangalore',
-          latlong: '',
-          face: 'http://static.squarespace.com/static/50ebe3b6e4b0a5b2685e26ac/t/52ced2c2e4b0b2d0085a61af/1389286083164/macys-logo.png'
-        },{
-          id: 2,
-          name: 'The Hole in the Wall Cafe',
-          address: '4 8th Main Road 4th Block Koramangala Bangalore',
-          latlong: '',
-          face: 'http://static.squarespace.com/static/50ebe3b6e4b0a5b2685e26ac/t/52ced2c2e4b0b2d0085a61af/1389286083164/macys-logo.png'
-          }
-        ];
+ {
+ 
+id: 1,
+ 
+name: 'SPAR Hyper Market',
+ 
+address: '100ft Rd, Koramangala 4 Block, Koramangala, Bangalore',
+ 
+latlong: '12.937795,77.627914',
+ 
+face: 'img/gold.png',
+ 
+phone: '919945578541'
+ },
+ {
+ 
+id: 2,
+ 
+name: 'Fitness First - Oasis Centre Mall',
+ 
+address: '100ft Rd, Koramangala 4 Block, Koramangala, Bangalore',
+ 
+latlong: '12.937795,77.627914',
+ 
+face: 'img/fitness.png',
+ 
+phone:'919986584535'
+ },
+ {
+ 
+id: 3,
+ 
+name: 'Lifestyle',
+ 
+address: '100ft Rd, Koramangala 4 Block, Koramangala, Bangalore',
+ 
+latlong: '12.937795,77.627914',
+ 
+face: 'img/lifestyle.png',
+ 
+phone:'918197721837'
+ },
+ {
+ 
+id: 4,
+ 
+name: 'Costa Coffee',
+ 
+address: '5th Floor, Oasis Mall, 100ft Rd, Koramangala 4 Block, Koramangala, Bangalore',
+ 
+latlong: '12.937795,77.627914',
+ 
+face: 'img/costa.png',
+ 
+phone:'919971877125'
+ },
+ {
+ 
+id: 5,
+ 
+name: 'Kanti Sweets',
+ 
+address: '100ft Rd, Koramangala 4 Block, Koramangala, Bangalore',
+ 
+latlong: '12.937795,77.627914',
+ 
+face: 'img/kanti.png',
+ 
+phone:'919632588018'
+ }
+];
 
         return {
          all: function() {
