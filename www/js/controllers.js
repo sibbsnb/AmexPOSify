@@ -3,10 +3,18 @@ angular.module('starter.controllers', [])
 //var beaconProximity;
 //var beaconAccuracy;
 
-.controller('DashCtrl', function($scope, Chats) {
-   $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+// .controller('DashCtrl', function($scope, Chats) {
+//    $scope.chats = Chats.all();
+//   $scope.remove = function(chat) {
+//     Chats.remove(chat);
+//   }
+  
+    
+// })
+.controller('DashCtrl', function($scope, Merchants) {
+   $scope.merchants = Merchants.all();
+  $scope.remove = function(merchant) {
+    Merchants.remove(merchant);
   }
   
     
@@ -103,8 +111,34 @@ function onSuccess(response) {
     
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope, $stateParams, Merchants,$http) {
+  $scope.merchant = Merchants.get($stateParams.merchantId);
+
+     angular.element(document).ready(function () {
+         //alert("load");
+         $scope.amountDivShow = true;
+         $scope.seInfoShow = true;
+         $scope.requestPayEabled = true;
+         $scope.transIdShow = false;
+         //document.getElementById("amountDiv").display = none;
+         //document.getElementById("seInfo").disabled = true;
+         
+         
+        $scope.requestPayDisabled = true;
+    });
+   $scope.paySMSAction = function() {
+      //document.getElementById("requestPayBtn1").disabled = true;
+      //$scope.requestPayDisabled = true;
+  
+      $http.get("http://bulksms.sms2india.info/sendsms.php?user=leoshubham89%40gmail.com&password=Amex123&sender=0008&countrycode=91&PhoneNumber=8197721837&text=This+is+API+Testing+Message&gateway=ZJWWTYRQ" ).success(function(data) {
+            //alert(data);
+            $scope.transIdShow = true;
+             $scope.requestPayEabled = false;
+                     })
+       .error(function(data) {
+    alert("ERROR");
+    });
+     };
 })
 
 .controller('FriendsCtrl', function($scope, Friends) {
