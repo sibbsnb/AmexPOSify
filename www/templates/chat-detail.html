@@ -1,11 +1,42 @@
 <!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  This template loads for the "tab.friend-detail" state (app.js)
+  "friend" is a $scope variable created in the FriendsCtrl controller (controllers.js)
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{chat.name}}">
-  <ion-content scroll="true" overflow-scroll="true" class="iframe-wrapper"> 
-   <iframe data-tap-disabled="true" src="http://www.macys.com/"></iframe>
-  </ion-content> 
-</ion-view>
+<ion-view view-title="AmexPOSify"> <ion-content>
+<ion-list>
+<div class="card" id="seInfo" ng-show="seInfoShow">
+	<div class="item item-divider">
+		<h2 id="storeName">{{merchant.name}}</h2>
+		<p id="storeAddres1">{{merchant.address}}</p>
+	</div>
+</div>
+<div class="list">
+	<label class="item item-input item-select" id="amountDiv"
+		ng-show="amountDivShow">
+		<div class="input-label">Amount</div> <select>
+			<option>₹500</option>
+			<option selected>₹1000</option>
+			<option>₹2000</option>
+			<option>₹5000</option>
+	</select>
+	</label>
+</div>
+
+<form ng-submit="paySMSAction()">
+	<div class="list" ng-show="requestPayEabled">
+		<label class="item">
+			<button id="requestPayBtn1"
+				class="button button-block button-positive" type="submit">Pay</button>
+		</label>
+	</div>
+</form>
+</div>
+<div class="card" id="transactionID" ng-show="transIdShow">
+	<div class="item item-divider">
+		<h2 id="tranId">AB123-ASDSD-Q#DSASD</h2>
+		<p id="transIDStatus">Transaction succesful, sms sent</p>
+	</div>
+</div>
+</ion-list> </ion-content> </ion-view>
