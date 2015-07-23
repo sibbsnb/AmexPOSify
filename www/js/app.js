@@ -67,7 +67,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
-
+   .state('tab.scanned-detail', {
+      url: '/chats/gautam',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/scanned-detail.html',
+          controller: 'scannedMerchantCtrl'
+        }
+      }
+    }) 
   .state('tab.friends', {
       url: '/friends',
       views: {

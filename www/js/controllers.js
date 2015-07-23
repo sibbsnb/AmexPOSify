@@ -20,7 +20,7 @@ angular.module('starter.controllers', [])
     
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $cordovaBarcodeScanner,$http) {
+.controller('ChatsCtrl', function($scope, Chats, $cordovaBarcodeScanner,$http,$location) {
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
@@ -29,12 +29,6 @@ angular.module('starter.controllers', [])
   
  
 
-  function onError(err) {
-    alert(JSON.stringify(err));
-}
-function onSuccess(response) {
-    alert(response);
-}
 
 
   
@@ -48,8 +42,9 @@ function onSuccess(response) {
          //document.getElementById("amountDiv").display = none;
          //document.getElementById("seInfo").disabled = true;
          
-         
  		 $scope.requestPayDisabled = true;
+
+
  		  
  		 
     });
@@ -59,15 +54,17 @@ function onSuccess(response) {
   $scope.scanBarcode = function() {
         $cordovaBarcodeScanner.scan().then(function(imageData) {
             //alert(imageData.text);
-            $scope.barcode=imageData.text;
-            document.getElementById("requestPayBtn1").disabled = false;
-         	$scope.amountDivShow = true;
-            $scope.seInfoShow = true;
-            $scope.requestPayEabled = true;
+          //   $scope.barcode=imageData.text;
+          //   document.getElementById("requestPayBtn1").disabled = false;
+         	// $scope.amountDivShow = true;
+          //   $scope.seInfoShow = true;
+          //   $scope.requestPayEabled = true;
            
             
             console.log("Barcode Format -> " + imageData.format);
             console.log("Cancelled -> " + imageData.cancelled);
+                 $location.path("/tab/chats/gautam");
+
         }, function(error) {
             console.log("An error happened -> " + error);
         });
@@ -111,8 +108,16 @@ function onSuccess(response) {
     
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Merchants,$http) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Merchants, $http) {
   $scope.merchant = Merchants.get($stateParams.merchantId);
+
+     
+  function onError(err) {
+    alert(JSON.stringify(err));
+}
+function onSuccess(response) {
+    alert(response);
+}
 
      angular.element(document).ready(function () {
          //alert("load");
@@ -126,6 +131,99 @@ function onSuccess(response) {
          
         $scope.requestPayDisabled = true;
     });
+
+       $scope.payApplePayAction = function() {
+      ApplePay.setMerchantId("merchant.com.sibish.posify");
+     ApplePay.makePaymentRequest(onSuccess, onError, {
+    items: [
+        { label: "item 1", amount: 0.01 },
+        { label: "item 2", amount: 0.01 }
+    ],
+    shippingMethods: [
+        { identifier: "By Sea", detail: "Shipmates on a ship.", amount: 0.01 },
+        { identifier: "Airmail", detail: "Ship it by airplane.", amount: 0.01 }
+    ]
+});
+     
+      };
+    
+     $scope.paySMSAction = function() {
+      
+      $http.get("http://bulksms.sms2india.info/sendsms.php?user=leoshubham89%40gmail.com&password=Amex123&sender=0008&countrycode=91&PhoneNumber=8197721837&text=This+is+API+Testing+Message&gateway=ZJWWTYRQ" ).success(function(data) {
+            //alert(data);
+            $scope.transIdShow = true;
+             $scope.requestPayEabled = false;
+                     })
+       .error(function(data) {
+    alert("ERROR");
+    });
+     };
+   $scope.paySMSAction = function() {
+      //document.getElementById("requestPayBtn1").disabled = true;
+      //$scope.requestPayDisabled = true;
+  
+      $http.get("http://bulksms.sms2india.info/sendsms.php?user=leoshubham89%40gmail.com&password=Amex123&sender=0008&countrycode=91&PhoneNumber=8197721837&text=This+is+API+Testing+Message&gateway=ZJWWTYRQ" ).success(function(data) {
+            //alert(data);
+            $scope.transIdShow = true;
+             $scope.requestPayEabled = false;
+                     })
+       .error(function(data) {
+    alert("ERROR");
+    });
+     };
+})
+
+.controller('scannedMerchantCtrl', function($scope, Merchants,$http) {
+  $scope.merchants = Merchants.all();
+  $scope.merchant = Merchants.get(2);
+
+
+  function onError(err) {
+    alert(JSON.stringify(err));
+}
+function onSuccess(response) {
+    alert(response);
+}
+
+     angular.element(document).ready(function () {
+         //alert("load");
+         $scope.amountDivShow = true;
+         $scope.seInfoShow = true;
+         $scope.requestPayEabled = true;
+         $scope.transIdShow = false;
+         //document.getElementById("amountDiv").display = none;
+         //document.getElementById("seInfo").disabled = true;
+         
+         
+        $scope.requestPayDisabled = true;
+    });
+
+       $scope.payApplePayAction = function() {
+      ApplePay.setMerchantId("merchant.com.sibish.posify");
+     ApplePay.makePaymentRequest(onSuccess, onError, {
+    items: [
+        { label: "item 1", amount: 0.01 },
+        { label: "item 2", amount: 0.01 }
+    ],
+    shippingMethods: [
+        { identifier: "By Sea", detail: "Shipmates on a ship.", amount: 0.01 },
+        { identifier: "Airmail", detail: "Ship it by airplane.", amount: 0.01 }
+    ]
+});
+     
+      };
+    
+     $scope.paySMSAction = function() {
+      
+      $http.get("http://bulksms.sms2india.info/sendsms.php?user=leoshubham89%40gmail.com&password=Amex123&sender=0008&countrycode=91&PhoneNumber=8197721837&text=This+is+API+Testing+Message&gateway=ZJWWTYRQ" ).success(function(data) {
+            //alert(data);
+            $scope.transIdShow = true;
+             $scope.requestPayEabled = false;
+                     })
+       .error(function(data) {
+    alert("ERROR");
+    });
+     };
    $scope.paySMSAction = function() {
       //document.getElementById("requestPayBtn1").disabled = true;
       //$scope.requestPayDisabled = true;
